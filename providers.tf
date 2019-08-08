@@ -2,6 +2,10 @@ terraform {
   required_version = ">= 0.12.3"
 }
 
+provider "pagerduty" {
+  token = "${var.pagerduty_token}"
+}
+
 provider "aws" {
   version = "2.17"
   region  = "${var.aws_region}"

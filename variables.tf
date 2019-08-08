@@ -23,6 +23,13 @@ variable "dd_app_key" {
   default     = ""
 }
 
+variable "pagerduty_token" {
+  type        = "string"
+  description = "PagerDuty Token"
+  default     = ""
+}
+
+
 ## Product Variables
 
 variable "dd_widget_width_small" {
