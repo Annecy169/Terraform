@@ -29,6 +29,13 @@ variable "pagerduty_token" {
   default     = ""
 }
 
+variable "slack_webhook_url" {
+  type        = "string"
+  description = "Slack Webhook URL"
+  default     = ""
+}
+
+
 
 ## Product Variables
 
