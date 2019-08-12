@@ -19,32 +19,32 @@ data "pagerduty_extension_schema" "slack-webhook" {
   name = "Generic V2 Webhook"
 }
 
-resource "pagerduty_schedule" "devops" {
-  name      = "DevOps Rotation"
-  time_zone = "Europe/London"
+# resource "pagerduty_schedule" "devops" {
+#   name      = "DevOps Rotation"
+#   time_zone = "Europe/London"
 
-  layer {
-    name                         = "24/7 Shift"
-    start                        = "2019-08-08T00:00:00-05:00"
-    rotation_virtual_start       = "2019-08-08T00:00:00-05:00"
-    rotation_turn_length_seconds = 43200
-    users                        = ["${pagerduty_user.watto.id}", "${data.pagerduty_user.xander.id}"]
-  }
-}
+#   layer {
+#     name                         = "24/7 Shift"
+#     start                        = "2019-08-08T00:00:00-05:00"
+#     rotation_virtual_start       = "2019-08-08T00:00:00-05:00"
+#     rotation_turn_length_seconds = 43200
+#     users                        = ["${pagerduty_user.watto.id}", "${data.pagerduty_user.xander.id}"]
+#   }
+# }
 
 resource "pagerduty_escalation_policy" "devops" {
   name      = "DevOps Escalation Policy"
   num_loops = 2
   teams     = ["${pagerduty_team.autodots.id}"]
 
-  rule {
-    escalation_delay_in_minutes = 10
+  # rule {
+  #   escalation_delay_in_minutes = 10
 
-    target {
-      type = "schedule"
-      id   = "${pagerduty_schedule.devops.id}"
-    }
-  }
+  #   target {
+  #     type = "schedule"
+  #     id   = "${pagerduty_schedule.devops.id}"
+  #   }
+  # }
 
   rule {
     escalation_delay_in_minutes = 10
