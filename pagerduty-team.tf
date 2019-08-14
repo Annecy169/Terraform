@@ -5,11 +5,12 @@ resource "pagerduty_team" "autodots" {
 }
 
 # Create a PagerDuty user
-resource "pagerduty_user" "watto" {
-  name  = "Alex Watson"
-  email = "alex.w@mmtdigital.co.uk"
-  teams = ["${pagerduty_team.autodots.id}"]
-}
+
+# resource "pagerduty_user" "watto" {
+#   name  = "Alex Watson"
+#   email = "alex.w@mmtdigital.co.uk"
+#   teams = ["${pagerduty_team.autodots.id}"]
+# }
 
 data "pagerduty_user" "xander" {
   email = "alex.t@mmtdigital.co.uk"
@@ -49,10 +50,10 @@ resource "pagerduty_escalation_policy" "devops" {
   rule {
     escalation_delay_in_minutes = 10
 
-    target {
-      type = "user"
-      id   = "${pagerduty_user.watto.id}"
-    }
+    # target {
+    #   type = "user"
+    #   id   = "${pagerduty_user.watto.id}"
+    # }
 
     target {
       type = "user"
