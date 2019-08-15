@@ -52,7 +52,7 @@ resource "datadog_screenboard" "xander-api-ec2-monitor" {
 
             request {
 
-                q       = "max:system.cpu.system{${var.ec2-api-host-name}}"
+                q       = "max:system.cpu.user{${var.ec2-api-host-name}}"
                 type    = "line"
                 aggregator = "max"
                 
@@ -292,7 +292,7 @@ resource "datadog_screenboard" "xander-api-ec2-monitor" {
 
             request {
 
-                q       = "avg:system.net.bytes_sent{host:MMT-Xander.local}, avg:system.net.bytes_rcvd{host:MMT-Xander.local}"
+                q       = "avg:system.net.bytes_sent{${var.ec2-api-host-name}}, avg:system.net.bytes_rcvd{${var.ec2-api-host-name}}"
                 type    = "line"
                 style   = {
                     palette     = "dog_classic"
